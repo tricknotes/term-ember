@@ -1,0 +1,25 @@
+{
+  "name": "term-ember",
+  "version": "0.0.1",
+  "description": "Run Ember.js in your terminal!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "git@github.com:tricknotes/term-ember.git",
+  "keywords": [
+    "ember",
+    "Ember.js"
+  ],
+  "main": "./lib/index",
+  "bin": {
+    "term-ember": "./bin/ember"
+  },
+  "author": "Ryunosuke SATO <tricknotes.rs@gmail.com>",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "zombie": "2.0.0-alpha15",
+    "commander": "~> 1.1.1"
+  }
+}

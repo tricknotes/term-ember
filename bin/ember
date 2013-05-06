@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+var ember   = require('../');
+var package = require('../package');
+
+var program = require('commander');
+
+var pageUrl = __dirname + '/../vender/index.html';
+
+program.version(package.version)
+  .option('-e, --ember <version>',      'A version of Ember.js (defaults to 1.0.0-rc3)')
+  .option('-h, --handlebars <version>', 'A version of Handlebars (defaults to 1.0.0.rc3)')
+  .option('-q, --jquery <version>',     'A version of jQuery (defaults to 1.9.1)')
+
+program
+  .command('run')
+  .description('Run Ember.js in your terminal (default)')
+
+program
+  .command('clear')
+  .description('Clear fetched JavaScript files')
+  .action(function() {
+    ember.manager.clearCaches();
+    process.exit(0);
+  });
+
+program
+  .parse(process.argv);
+
+program.ember       = program.ember       || '1.0.0-rc.3';
+program.handlebars  = program.handlebars  || '1.0.0-rc.3';
+program.jquery      = program.jquery      || '1.9.1';
+
+ember
+  .setup('ember',       program.ember)
+  .setup('handlebars',  program.handlebars)
+  .setup('jquery',      program.jquery)
+  .then(function() {
+    ember.run('file://' + pageUrl);
+  });
