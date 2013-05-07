@@ -2,7 +2,6 @@
   "name": "term-ember",
   "version": "0.0.2",
   "description": "Run Ember.js in your terminal!",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
