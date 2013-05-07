@@ -26,6 +26,26 @@ term ember> Ember.VERSION
 '1.0.0-rc.3'
 ```
 
+## Features
+
+### Require external scripts
+
+``` javascript
+term ember> require('./my-app');
+```
+
+Avairable languages are:
+* JavaScript
+* CoffeeScript
+
+### Switch library versions
+
+You can use `--ember` option to switch version of Ember.js.
+
+``` sh
+$ term-ember --ember latest
+```
+
 ## Options
 
 ```
