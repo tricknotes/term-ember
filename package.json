@@ -20,6 +20,7 @@
   "readmeFilename": "README.md",
   "dependencies": {
     "zombie": "2.0.0-alpha15",
-    "commander": "~> 1.1.1"
+    "commander": "~> 1.1.1",
+    "coffee-script": "1.6.2"
   }
 }
