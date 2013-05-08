@@ -21,5 +21,8 @@
     "zombie": "2.0.0-alpha17",
     "commander": "~> 1.1.1",
     "coffee-script": "1.6.2"
+  },
+  "devDependencies": {
+    "jshint": "~> 0.9.1"
   }
 }
