@@ -1,3 +1,5 @@
 /node_modules
 /vender/downloads/*.js
 /vender/current/*.js
+/test/tmp/downloads/*.js
+/test/tmp/current/*.js
