@@ -36,5 +36,5 @@ ember
   .setup('handlebars',  program.handlebars)
   .setup('jquery',      program.jquery)
   .then(function() {
-    ember.run('file://' + pageUrl);
+    ember.run('file://' + pageUrl, process.stdin, process.stdout);
   });
