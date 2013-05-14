@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 var expect = require('expect.js');
 
 var Manager   = require('../lib/manager');
@@ -40,7 +42,23 @@ describe('Manager', function() {
   });
 
   describe('.clearCaches()', function() {
-    it('should be tested');
+    context('chdir to tmp', function() {
+      var baseDir = __dirname + '/tmp';
+
+      before(function() {
+        Manager.baseDir = baseDir;
+
+        fs.writeFileSync(baseDir + '/downloads/test.js', 'var TEST;');
+      });
+
+      it('should clean all caches', function() {
+        expect(fs.existsSync(baseDir + '/downloads/test.js')).to.ok();
+
+        Manager.clearCaches();
+
+        expect(fs.existsSync(baseDir + '/downloads/test.js')).to.not.ok();
+      });
+    });
   });
 
   context('Using mock asset host', function() {
