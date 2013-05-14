@@ -11,15 +11,15 @@ var StubStream = function() {
   this.data = '';
 
   Stream.call(this);
-}
+};
 util.inherits(StubStream, Stream);
 
 StubStream.prototype.readable = true;
 StubStream.prototype.writable = true;
 
 StubStream.prototype.write  = function() {};
-StubStream.prototype.resume = function() {}
-StubStream.prototype.pause  = function() {}
+StubStream.prototype.resume = function() {};
+StubStream.prototype.pause  = function() {};
 
 describe('Runner', function() {
   var testFile = 'file://' + __dirname + '/fixtures/runner.html';

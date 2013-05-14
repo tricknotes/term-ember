@@ -102,7 +102,7 @@ describe('AssetHost', function() {
             expect(filename).to.equal('ember-1.0.0.js');
             expect(fs.existsSync(localPath)).to.equal(false);
             expect(error).to.be.an(Error);
-            expect(error.message).to.equal('Version not found: (ember-1.0.0.js)');;
+            expect(error.message).to.equal('Version not found: (ember-1.0.0.js)');
 
             done();
           });
