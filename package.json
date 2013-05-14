@@ -17,6 +17,9 @@
   "author": "Ryunosuke SATO <tricknotes.rs@gmail.com>",
   "license": "MIT",
   "readmeFilename": "README.md",
+  "engines": {
+    "node": ">= 0.8"
+  },
   "dependencies": {
     "zombie": "2.0.0-alpha18",
     "commander": "~> 1.1.1",

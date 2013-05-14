@@ -7,7 +7,7 @@ Run [Ember.js][] in your terminal!
 ## Install
 
 Requirements:
-* Node.js 0.8.x
+* Node.js 0.10.x
 
 ``` sh
 $ npm install -g term-ember
