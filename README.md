@@ -1,6 +1,7 @@
 # term ember
 
 [![Build Status](https://travis-ci.org/tricknotes/term-ember.png?branch=master)](https://travis-ci.org/tricknotes/term-ember)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/tricknotes/term-ember/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 Run [Ember.js][] in your terminal!
 
