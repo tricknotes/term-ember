@@ -58,7 +58,7 @@ $ term-ember --help
   Commands:
 
     run                    Run Ember.js in your terminal (default)
-    clear                  Clear fetched JavaScript files
+    clear                  Clear cached JavaScript files
 
   Options:
 

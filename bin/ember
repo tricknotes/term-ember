@@ -18,7 +18,7 @@ program
 
 program
   .command('clear')
-  .description('Clear fetched JavaScript files')
+  .description('Clear cached JavaScript files')
   .action(function() {
     ember.manager.clearCaches();
     process.exit(0);
