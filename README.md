@@ -1,5 +1,7 @@
 # term ember
 
+[![Build Status](https://travis-ci.org/tricknotes/nothub-stream.png?branch=master)](https://travis-ci.org/tricknotes/nothub-stream)
+
 Run [Ember.js][] in your terminal!
 
 [Ember.js]: http://emberjs.com/
