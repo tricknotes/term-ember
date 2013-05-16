@@ -3,7 +3,7 @@
   "version": "0.0.3",
   "description": "Run Ember.js in your terminal!",
   "scripts": {
-    "test": "mocha test && jshint lib test/*.js"
+    "test": "mocha test && jshint bin lib test/*.js"
   },
   "repository": "git@github.com:tricknotes/term-ember.git",
   "keywords": [
