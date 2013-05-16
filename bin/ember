@@ -8,9 +8,9 @@ var program = require('commander');
 var pageUrl = __dirname + '/../vender/index.html';
 
 program.version(package.version)
-  .option('-e, --ember <version>',      'A version of Ember.js (defaults to 1.0.0-rc3)')
-  .option('-h, --handlebars <version>', 'A version of Handlebars (defaults to 1.0.0.rc3)')
-  .option('-q, --jquery <version>',     'A version of jQuery (defaults to 1.9.1)')
+  .option('--ember <version>',      'A version of Ember.js (defaults to 1.0.0-rc3)')
+  .option('--handlebars <version>', 'A version of Handlebars (defaults to 1.0.0.rc3)')
+  .option('--jquery <version>',     'A version of jQuery (defaults to 1.9.1)')
 
 program
   .command('run')
