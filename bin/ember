@@ -10,8 +10,8 @@ var program = require('commander');
 var pageUrl = __dirname + '/../vender/index.html';
 
 program.version(package.version)
-  .option('-r, --require <file>',   'Require file(s) before start term-ember', toArray('require'))
-  .option('-e, --eval <script>',    'Evaluate script before start term-ember')
+  .option('-r, --require <file>',   'Require file(s) before start ' + package.name, toArray('require'))
+  .option('-e, --eval <script>',    'Evaluate script before start ' + package.name)
   .option('--ember <version>',      'A version of Ember.js (defaults to 1.0.0-rc3)')
   .option('--handlebars <version>', 'A version of Handlebars (defaults to 1.0.0.rc3)')
   .option('--jquery <version>',     'A version of jQuery (defaults to 1.9.1)')
