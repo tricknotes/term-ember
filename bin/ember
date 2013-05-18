@@ -11,21 +11,15 @@ program.version(package.version)
   .option('--ember <version>',      'A version of Ember.js (defaults to 1.0.0-rc3)')
   .option('--handlebars <version>', 'A version of Handlebars (defaults to 1.0.0.rc3)')
   .option('--jquery <version>',     'A version of jQuery (defaults to 1.9.1)')
-
-program
-  .command('run')
-  .description('Run Ember.js in your terminal (default)')
-
-program
-  .command('clear')
-  .description('Clear cached JavaScript files')
-  .action(function() {
-    ember.manager.clearCaches();
-    process.exit(0);
-  });
+  .option('--clear',                'Clear cached JavaScript libraries')
 
 program
   .parse(process.argv);
+
+if (program.clear) {
+  ember.manager.clearCaches();
+  process.exit(0);
+}
 
 program.ember       = program.ember       || '1.0.0-rc.3';
 program.handlebars  = program.handlebars  || '1.0.0-rc.3';
