@@ -34,9 +34,9 @@ ember
   .setup('handlebars',  program.handlebars)
   .setup('jquery',      program.jquery)
   .then(function() {
-    var runner = ember.run('file://' + pageUrl, process.stdin, process.stdout);
-
     if (files.length > 0) {
+      var runner = ember.run('file://' + pageUrl, process.stdin, process.stdout, {prompt: ''});
+
       runner.on('ready', function(window) {
         var Ember = window.Ember;
 
@@ -51,5 +51,7 @@ ember
           }
         }, 10);
       });
+    } else {
+      ember.run('file://' + pageUrl, process.stdin, process.stdout);
     }
   });
