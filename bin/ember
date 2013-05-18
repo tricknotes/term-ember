@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+var path = require('path');
+
 var ember   = require('../');
 var package = require('../package');
 
@@ -21,6 +23,8 @@ if (program.clear) {
   process.exit(0);
 }
 
+var files = program.args;
+
 program.ember       = program.ember       || '1.0.0-rc.3';
 program.handlebars  = program.handlebars  || '1.0.0-rc.3';
 program.jquery      = program.jquery      || '1.9.1';
@@ -30,5 +34,22 @@ ember
   .setup('handlebars',  program.handlebars)
   .setup('jquery',      program.jquery)
   .then(function() {
-    ember.run('file://' + pageUrl, process.stdin, process.stdout);
+    var runner = ember.run('file://' + pageUrl, process.stdin, process.stdout);
+
+    if (files.length > 0) {
+      runner.on('ready', function(window) {
+        var Ember = window.Ember;
+
+        files.forEach(function(file) {
+          file = path.relative(__dirname, file);
+          window.require(file);
+        });
+        // TODO Wait timers are free
+        setInterval(function() {
+          if (!Ember.run.hasScheduledTimers()) {
+            process.exit(0);
+          }
+        }, 10);
+      });
+    }
   });
