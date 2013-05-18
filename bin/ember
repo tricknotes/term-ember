@@ -10,6 +10,7 @@ var program = require('commander');
 var pageUrl = __dirname + '/../vender/index.html';
 
 program.version(package.version)
+  .option('-r, --require <file>',   'Require file(s) before start term-ember', toArray('require'))
   .option('--ember <version>',      'A version of Ember.js (defaults to 1.0.0-rc3)')
   .option('--handlebars <version>', 'A version of Handlebars (defaults to 1.0.0.rc3)')
   .option('--jquery <version>',     'A version of jQuery (defaults to 1.9.1)')
@@ -29,23 +30,29 @@ program.ember      = program.ember      || '1.0.0-rc.3';
 program.handlebars = program.handlebars || '1.0.0-rc.3';
 program.jquery     = program.jquery     || '1.9.1';
 
+program.require = program.require || [];
+
 ember
   .setup('ember',      program.ember)
   .setup('handlebars', program.handlebars)
   .setup('jquery',     program.jquery)
   .then(function() {
+    var runner = ember.run('file://' + pageUrl, process.stdin, process.stdout);
+
+    runner.on('ready', function(window) {
+      program.require.forEach(function(file) {
+        window.require(normalizePath(file));
+      });
+    });
+
     if (files.length > 0) {
-      var runner = ember.run('file://' + pageUrl, process.stdin, process.stdout, {prompt: ''});
+      runner.prompt = '';
 
       runner.on('ready', function(window) {
         var Ember = window.Ember;
 
         files.forEach(function(file) {
-          file = path.relative(process.cwd(), file);
-          if (!/^\./.test(file)) {
-            file = './' + file;
-          }
-          window.require(file);
+          window.require(normalizePath(file));
         });
 
         // TODO Wait timers are free
@@ -55,7 +62,24 @@ ember
           }
         }, 10);
       });
-    } else {
-      ember.run('file://' + pageUrl, process.stdin, process.stdout);
     }
   });
+
+function toArray(name) {
+  return function(value) {
+    if (!Array.isArray(this[name])) {
+      this[name] = [];
+    }
+    this[name].push(value);
+
+    return this[name];
+  };
+};
+
+function normalizePath(file) {
+  file = path.relative(process.cwd(), file);
+  if (!/^\./.test(file)) {
+    file = './' + file;
+  }
+  return file;
+}
