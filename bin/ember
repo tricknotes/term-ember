@@ -25,14 +25,14 @@ if (program.clear) {
 
 var files = program.args;
 
-program.ember       = program.ember       || '1.0.0-rc.3';
-program.handlebars  = program.handlebars  || '1.0.0-rc.3';
-program.jquery      = program.jquery      || '1.9.1';
+program.ember      = program.ember      || '1.0.0-rc.3';
+program.handlebars = program.handlebars || '1.0.0-rc.3';
+program.jquery     = program.jquery     || '1.9.1';
 
 ember
-  .setup('ember',       program.ember)
-  .setup('handlebars',  program.handlebars)
-  .setup('jquery',      program.jquery)
+  .setup('ember',      program.ember)
+  .setup('handlebars', program.handlebars)
+  .setup('jquery',     program.jquery)
   .then(function() {
     if (files.length > 0) {
       var runner = ember.run('file://' + pageUrl, process.stdin, process.stdout, {prompt: ''});
@@ -44,6 +44,7 @@ ember
           file = path.relative(__dirname, file);
           window.require(file);
         });
+
         // TODO Wait timers are free
         setInterval(function() {
           if (!Ember.run.hasScheduledTimers()) {
