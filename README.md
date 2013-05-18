@@ -41,6 +41,28 @@ Avairable languages are:
 * JavaScript
 * CoffeeScript
 
+### Execute files
+
+``` sh
+$ term-ember my_script.js
+```
+
+### Evaluate script
+
+``` sh
+$ term-ember -e "console.log(Ember.VERSION)"
+1.0.0-rc.3
+```
+
+### Require file(s)
+
+You can require your script file before term-ember start:
+
+``` sh
+$ term-ember -r my_script.js
+term ember>
+```
+
 ### Switch library versions
 
 You can use `--ember` option to switch version of Ember.js.
