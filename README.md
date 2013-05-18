@@ -61,6 +61,7 @@ $ term-ember --help
     -h, --help              output usage information
     -V, --version           output the version number
     -r, --require <file>    Require file(s) before start term-ember
+    -e, --eval <script>     Evaluate script before start term-ember
     --ember <version>       A version of Ember.js (defaults to 1.0.0-rc3)
     --handlebars <version>  A version of Handlebars (defaults to 1.0.0.rc3)
     --jquery <version>      A version of jQuery (defaults to 1.9.1)

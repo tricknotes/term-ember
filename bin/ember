@@ -11,6 +11,7 @@ var pageUrl = __dirname + '/../vender/index.html';
 
 program.version(package.version)
   .option('-r, --require <file>',   'Require file(s) before start term-ember', toArray('require'))
+  .option('-e, --eval <script>',    'Evaluate script before start term-ember')
   .option('--ember <version>',      'A version of Ember.js (defaults to 1.0.0-rc3)')
   .option('--handlebars <version>', 'A version of Handlebars (defaults to 1.0.0.rc3)')
   .option('--jquery <version>',     'A version of jQuery (defaults to 1.9.1)')
@@ -45,23 +46,27 @@ ember
       });
     });
 
-    if (files.length > 0) {
+    if ((files.length > 0) || program.eval) {
       runner.prompt = '';
+    }
 
+    if (files.length > 0) {
       runner.on('ready', function(window) {
-        var Ember = window.Ember;
+        runner.evaluate(program.eval);
 
         files.forEach(function(file) {
           window.require(normalizePath(file));
         });
-
-        // TODO Wait timers are free
-        setInterval(function() {
-          if (!Ember.run.hasScheduledTimers()) {
-            process.exit(0);
-          }
-        }, 10);
+        exitOnTimersExpire(window);
       });
+    } else {
+      if (program.eval) {
+        runner.on('ready', function(window) {
+          runner.evaluate(program.eval);
+
+          exitOnTimersExpire(window);
+        });
+      }
     }
   });
 
@@ -82,4 +87,15 @@ function normalizePath(file) {
     file = './' + file;
   }
   return file;
+}
+
+function exitOnTimersExpire(window) {
+  var Ember = window.Ember;
+
+  // TODO Wait timers are free
+  setInterval(function() {
+    if (!Ember.run.hasScheduledTimers()) {
+      process.exit(0);
+    }
+  }, 10);
 }

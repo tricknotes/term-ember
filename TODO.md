@@ -6,4 +6,3 @@
 * Load ember-data (optional)
 * Initialize application
 * Use original HTML
-* evaluate my javascript
