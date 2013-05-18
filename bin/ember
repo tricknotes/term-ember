@@ -41,7 +41,10 @@ ember
         var Ember = window.Ember;
 
         files.forEach(function(file) {
-          file = path.relative(__dirname, file);
+          file = path.relative(process.cwd(), file);
+          if (!/^\./.test(file)) {
+            file = './' + file;
+          }
           window.require(file);
         });
 
