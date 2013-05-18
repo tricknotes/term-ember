@@ -54,20 +54,16 @@ $ term-ember --ember latest
 ```
 $ term-ember --help
 
-  Usage: ember [options] [command]
-
-  Commands:
-
-    run                    Run Ember.js in your terminal (default)
-    clear                  Clear cached JavaScript files
+  Usage: term-ember [options]
 
   Options:
 
-    -h, --help                  output usage information
-    -V, --version               output the version number
-    -e, --ember <version>       A version of Ember.js (defaults to 1.0.0-rc3)
-    -h, --handlebars <version>  A version of Handlebars (defaults to 1.0.0.rc3)
-    -q, --jquery <version>      A version of jQuery (defaults to 1.9.1)
+    -h, --help              output usage information
+    -V, --version           output the version number
+    --ember <version>       A version of Ember.js (defaults to 1.0.0-rc3)
+    --handlebars <version>  A version of Handlebars (defaults to 1.0.0.rc3)
+    --jquery <version>      A version of jQuery (defaults to 1.9.1)
+    --clear                 Clear cached JavaScript libraries
 ```
 
 ## License
