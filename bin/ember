@@ -9,12 +9,18 @@ var program = require('commander');
 
 var pageUrl = __dirname + '/../vender/index.html';
 
+var defaultVersions = {
+  ember:      '1.0.0-rc.5',
+  handlebars: '1.0.0-rc.4',
+  jquery:     '1.9.1'
+}
+
 program.version(package.version)
   .option('-r, --require <file>',   'Require file(s) before start ' + package.name, toArray('require'))
   .option('-e, --eval <script>',    'Evaluate script before start ' + package.name)
-  .option('--ember <version>',      'A version of Ember.js (defaults to 1.0.0-rc5)')
-  .option('--handlebars <version>', 'A version of Handlebars (defaults to 1.0.0.rc4)')
-  .option('--jquery <version>',     'A version of jQuery (defaults to 1.9.1)')
+  .option('--ember <version>',      'A version of Ember.js (defaults to ' + defaultVersions.ember + ')')
+  .option('--handlebars <version>', 'A version of Handlebars (defaults to ' + defaultVersions.handlebars + ')')
+  .option('--jquery <version>',     'A version of jQuery (defaults to ' + defaultVersions.jquery + ')')
   .option('--clear',                'Clear cached JavaScript libraries')
 
 program
@@ -27,9 +33,9 @@ if (program.clear) {
 
 var files = program.args;
 
-program.ember      = program.ember      || '1.0.0-rc.5';
-program.handlebars = program.handlebars || '1.0.0-rc.4';
-program.jquery     = program.jquery     || '1.9.1';
+program.ember      = program.ember      || defaultVersions.ember;
+program.handlebars = program.handlebars || defaultVersions.handlebars;
+program.jquery     = program.jquery     || defaultVersions.jquery;
 
 program.require = program.require || [];
 
