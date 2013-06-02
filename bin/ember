@@ -12,8 +12,8 @@ var pageUrl = __dirname + '/../vender/index.html';
 program.version(package.version)
   .option('-r, --require <file>',   'Require file(s) before start ' + package.name, toArray('require'))
   .option('-e, --eval <script>',    'Evaluate script before start ' + package.name)
-  .option('--ember <version>',      'A version of Ember.js (defaults to 1.0.0-rc3)')
-  .option('--handlebars <version>', 'A version of Handlebars (defaults to 1.0.0.rc3)')
+  .option('--ember <version>',      'A version of Ember.js (defaults to 1.0.0-rc5)')
+  .option('--handlebars <version>', 'A version of Handlebars (defaults to 1.0.0.rc4)')
   .option('--jquery <version>',     'A version of jQuery (defaults to 1.9.1)')
   .option('--clear',                'Clear cached JavaScript libraries')
 
@@ -27,8 +27,8 @@ if (program.clear) {
 
 var files = program.args;
 
-program.ember      = program.ember      || '1.0.0-rc.3';
-program.handlebars = program.handlebars || '1.0.0-rc.3';
+program.ember      = program.ember      || '1.0.0-rc.5';
+program.handlebars = program.handlebars || '1.0.0-rc.4';
 program.jquery     = program.jquery     || '1.9.1';
 
 program.require = program.require || [];
