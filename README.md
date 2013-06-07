@@ -86,7 +86,7 @@ $ term-ember --help
     -e, --eval <script>     Evaluate script before start term-ember
     --ember <version>       A version of Ember.js (defaults to 1.0.0-rc5)
     --handlebars <version>  A version of Handlebars (defaults to 1.0.0.rc4)
-    --jquery <version>      A version of jQuery (defaults to 1.9.1)
+    --jquery <version>      A version of jQuery (defaults to 1.10.1)
     --clear                 Clear cached JavaScript libraries
 ```
 
