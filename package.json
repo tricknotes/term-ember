@@ -22,11 +22,11 @@
   },
   "dependencies": {
     "zombie": "2.0.0-alpha19",
-    "commander": "~> 1.1.1",
+    "commander": "~> 1.2.0",
     "coffee-script": "~> 1.6.2"
   },
   "devDependencies": {
-    "mocha": "~> 1.10.0",
+    "mocha": "~> 1.11.0",
     "expect.js": "*",
     "nock": "~> 0.18.0",
     "jshint": "~> 2.1.1"
