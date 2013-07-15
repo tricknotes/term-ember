@@ -51,7 +51,7 @@ $ term-ember my_script.js
 
 ``` sh
 $ term-ember -e "console.log(Ember.VERSION)"
-1.0.0-rc.5
+1.0.0-rc.6
 ```
 
 ### Require file(s)
@@ -84,9 +84,9 @@ $ term-ember --help
     -V, --version           output the version number
     -r, --require <file>    Require file(s) before start term-ember
     -e, --eval <script>     Evaluate script before start term-ember
-    --ember <version>       A version of Ember.js (defaults to 1.0.0-rc5)
+    --ember <version>       A version of Ember.js (defaults to 1.0.0-rc6)
     --handlebars <version>  A version of Handlebars (defaults to 1.0.0.rc4)
-    --jquery <version>      A version of jQuery (defaults to 1.10.1)
+    --jquery <version>      A version of jQuery (defaults to 2.0.3)
     --clear                 Clear cached JavaScript libraries
 ```
 

@@ -12,7 +12,7 @@ var pageUrl = __dirname + '/../vender/index.html';
 var defaultVersions = {
   ember:      '1.0.0-rc.6',
   handlebars: '1.0.0-rc.4',
-  jquery:     '1.10.1'
+  jquery:     '2.0.3'
 }
 
 program.version(package.version)
