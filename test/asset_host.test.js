@@ -29,15 +29,45 @@ describe('AssetHost', function() {
       });
     });
 
-    describe('.versionToFilename()', function() {
-      it('should return filename with prefix "ember-"', function() {
-        expect(emberHost.versionToFilename('1.0.0')).to.equal('ember-1.0.0.js');
+    context('version is "1.0.0"', function() {
+      describe('.versionToFilename()', function() {
+        it('should return filename with prefix "tags" and version', function() {
+          expect(emberHost.versionToFilename('1.0.0')).to.equal('ember-1.0.0.js');
+        });
+      });
+
+      describe('.versionToPath()', function() {
+        it('should return filename with prefix "tags" and version', function() {
+          expect(emberHost.versionToPath('1.0.0')).to.equal('/tags/v1.0.0/ember.js');
+        });
       });
     });
 
-    describe('.versionToPath()', function() {
-      it('should return filename with prefix "/ember-"', function() {
-        expect(emberHost.versionToPath('1.0.0')).to.equal('/ember-1.0.0.js');
+    context('version is "1.0.0.rc8"', function() {
+      describe('.versionToFilename()', function() {
+        it('should return filename with prefix "ember-"', function() {
+          expect(emberHost.versionToFilename('1.0.0rc8')).to.equal('ember-1.0.0-rc.8.js');
+        });
+      });
+
+      describe('.versionToPath()', function() {
+        it('should return filename with prefix "ember-"', function() {
+          expect(emberHost.versionToPath('1.0.0.rc8')).to.equal('/tags/v1.0.0-rc.8/ember.js');
+        });
+      });
+    });
+
+    context('version is "1.0.0.rc7"', function() {
+      describe('.versionToFilename()', function() {
+        it('should return filename with prefix "ember-"', function() {
+          expect(emberHost.versionToFilename('1.0.0rc7')).to.equal('ember-1.0.0-rc.7.js');
+        });
+      });
+
+      describe('.versionToPath()', function() {
+        it('should return filename with prefix "ember-"', function() {
+          expect(emberHost.versionToPath('1.0.0.rc7')).to.equal('/ember-1.0.0-rc.7.js');
+        });
       });
     });
 
@@ -70,7 +100,7 @@ describe('AssetHost', function() {
       context('When host returns 200', function() {
         before(function() {
           nock('http://builds.emberjs.com')
-            .get('/ember-1.0.0.js')
+            .get('/tags/v1.0.0/ember.js')
             .reply(200, "Ember.VERSION");
         });
 
@@ -91,7 +121,7 @@ describe('AssetHost', function() {
       context('When host returns 404', function() {
         before(function() {
           nock('http://builds.emberjs.com')
-            .get('/ember-1.0.0.js')
+            .get('/tags/v1.0.0/ember.js')
             .reply(404, "Not cound");
         });
 
@@ -102,7 +132,7 @@ describe('AssetHost', function() {
             expect(filename).to.equal('ember-1.0.0.js');
             expect(fs.existsSync(localPath)).to.equal(false);
             expect(error).to.be.an(Error);
-            expect(error.message).to.equal('Version not found: (ember-1.0.0.js)');
+            expect(error.message).to.equal('Version not found: (1.0.0)');
 
             done();
           });
