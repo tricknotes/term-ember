@@ -51,7 +51,7 @@ describe('AssetHost', function() {
       });
 
       describe('.versionToPath()', function() {
-        it('should return filename with prefix "ember-"', function() {
+        it('should return path with prefix "tags" and version', function() {
           expect(emberHost.versionToPath('1.0.0.rc8')).to.equal('/tags/v1.0.0-rc.8/ember.js');
         });
       });
