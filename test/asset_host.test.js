@@ -71,6 +71,20 @@ describe('AssetHost', function() {
       });
     });
 
+    context('version is "latest"', function() {
+      describe('.versionToFilename()', function() {
+        it('should return filename "ember-latest.js"', function() {
+          expect(emberHost.versionToFilename('latest')).to.equal('ember-latest.js');
+        });
+      });
+
+      describe('.versionToPath()', function() {
+        it('should return path "/canary/ember.js"', function() {
+          expect(emberHost.versionToPath('latest')).to.equal('/canary/ember.js');
+        });
+      });
+    });
+
     describe('.isCacheable', function() {
       it('should return true with version "1.0.0"', function() {
         expect(emberHost.isCacheable('1.0.0')).to.equal(true);
