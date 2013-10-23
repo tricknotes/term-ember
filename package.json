@@ -1,6 +1,6 @@
 {
   "name": "term-ember",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Run Ember.js in your terminal!",
   "scripts": {
     "test": "mocha test && jshint bin lib test/*.js"
