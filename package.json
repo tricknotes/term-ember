@@ -18,7 +18,7 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "engines": {
-    "node": ">= 0.8"
+    "node": ">= 0.10"
   },
   "dependencies": {
     "zombie": "2.0.0-alpha24",
