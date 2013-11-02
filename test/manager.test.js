@@ -62,11 +62,11 @@ describe('Manager', function() {
   });
 
   context('Using mock asset host', function() {
-    before(function() {
+    beforeEach(function() {
       Manager.registerHost('test', nullAssetHost);
     });
 
-    after(function() {
+    afterEach(function() {
       Manager.unregisterHost('test');
     });
 
@@ -77,7 +77,7 @@ describe('Manager', function() {
     });
 
     describe('#setup()', function() {
-      before(function() {
+      beforeEach(function() {
         manager = new Manager();
       });
 
@@ -94,6 +94,17 @@ describe('Manager', function() {
         }));
 
         manager.setup('test', '0.0.0');
+      });
+
+      // TODO I want to add more assertion...
+      it('should allow to be given local asset', function() {
+        Manager.registerHost('test', AssetHost.create({
+          fetchAsset: function(version) {
+            expect().fail();
+          }
+        }));
+
+        manager.setup('test', __dirname + '/fixtures/custom.js');
       });
     });
 
