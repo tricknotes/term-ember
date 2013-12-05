@@ -26,9 +26,9 @@
     "coffee-script": "~> 1.6.2"
   },
   "devDependencies": {
-    "mocha": "~> 1.13.0",
+    "mocha": "~> 1.15.1",
     "expect.js": "*",
-    "nock": "~> 0.22.0",
+    "nock": "~> 0.25.0",
     "jshint": "~> 2.3.0"
   }
 }
