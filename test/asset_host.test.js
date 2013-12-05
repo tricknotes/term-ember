@@ -25,7 +25,7 @@ describe('AssetHost', function() {
 
     describe('.host', function() {
       it('should return "builds.emberjs.com"', function() {
-        expect(emberHost.host).to.equal('builds.emberjs.com');
+        expect(emberHost.host()).to.equal('builds.emberjs.com');
       });
     });
 
