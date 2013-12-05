@@ -13,8 +13,8 @@ var program = require('commander');
 var pageUrl = __dirname + '/../vender/index.html';
 
 var defaultVersions = {
-  ember:      '1.1.2',
-  handlebars: '1.0.0',
+  ember:      '1.2.0',
+  handlebars: '1.1.2',
   jquery:     '2.0.3'
 }
 
