@@ -21,14 +21,14 @@
     "node": ">= 0.10"
   },
   "dependencies": {
-    "zombie": "2.0.0-alpha24",
-    "commander": "~> 2.0.0",
-    "coffee-script": "~> 1.6.2"
+    "zombie": "2.0.0-alpha29",
+    "commander": "~> 2.1.0",
+    "coffee-script": "~> 1.7.1"
   },
   "devDependencies": {
-    "mocha": "~> 1.15.1",
+    "mocha": "~> 1.17.1",
     "expect.js": "*",
-    "nock": "~> 0.25.0",
+    "nock": "~> 0.27.0",
     "jshint": "~> 2.3.0"
   }
 }
