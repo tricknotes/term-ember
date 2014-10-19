@@ -21,7 +21,7 @@
     "node": ">= 0.10"
   },
   "dependencies": {
-    "zombie": "2.0.0-alpha29",
+    "zombie": "2.0.8",
     "commander": "~> 2.1.0",
     "coffee-script": "~> 1.7.1"
   },
