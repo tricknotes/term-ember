@@ -12,7 +12,7 @@
   ],
   "main": "./lib/index",
   "bin": {
-    "term-ember": "./bin/ember"
+    "term-ember": "./bin/term-ember"
   },
   "author": "Ryunosuke SATO <tricknotes.rs@gmail.com>",
   "license": "MIT",
