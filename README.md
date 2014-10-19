@@ -26,7 +26,7 @@ You can touch `Ember` object in `window` context.
 
 ```
 term ember> Ember.VERSION
-'1.4.0
+'1.7.0
 ```
 
 ## Features
@@ -51,7 +51,7 @@ $ term-ember my_script.js
 
 ``` sh
 $ term-ember -e "console.log(Ember.VERSION)"
-1.4.0
+1.7.0
 ```
 
 ### Require file(s)
@@ -84,9 +84,9 @@ $ term-ember --help
     -V, --version           output the version number
     -r, --require <file>    Require file(s) before start term-ember
     -e, --eval <script>     Evaluate script before start term-ember
-    --ember <version>       A version of Ember.js (defaults to 1.4.0)
-    --handlebars <version>  A version of Handlebars (defaults to 1.2.1)
-    --jquery <version>      A version of jQuery (defaults to 2.0.3)
+    --ember <version>       A version of Ember.js (defaults to 1.7.0)
+    --handlebars <version>  A version of Handlebars (defaults to 1.3.0)
+    --jquery <version>      A version of jQuery (defaults to 2.1.0)
     --clear                 Clear cached JavaScript libraries
 ```
 
