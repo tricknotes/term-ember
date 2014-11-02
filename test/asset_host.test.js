@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-var expect = require('expect.js');
+var assert = require('power-assert');
 var nock   = require('nock');
 
 var AssetHost = require('../lib/asset_host');
@@ -10,13 +10,13 @@ describe('AssetHost', function() {
     it('should create an instance of AssetHost', function() {
       var asset = AssetHost.create({});
 
-      expect(asset).to.be.an(AssetHost);
+      assert(asset instanceof AssetHost);
     });
 
     it('should overwrite prototype property of AssetHost', function() {
       var asset = AssetHost.create({host: 'example.com'});
 
-      expect(asset).to.have.property('host', 'example.com');
+      assert(asset.host === 'example.com');
     });
   });
 
@@ -25,20 +25,20 @@ describe('AssetHost', function() {
 
     describe('.host', function() {
       it('should return "builds.emberjs.com"', function() {
-        expect(emberHost.host()).to.equal('builds.emberjs.com');
+        assert(emberHost.host() === 'builds.emberjs.com');
       });
     });
 
     context('version is "1.0.0"', function() {
       describe('.versionToFilename()', function() {
         it('should return filename with prefix "tags" and version', function() {
-          expect(emberHost.versionToFilename('1.0.0')).to.equal('ember-1.0.0.js');
+          assert(emberHost.versionToFilename('1.0.0') === 'ember-1.0.0.js');
         });
       });
 
       describe('.versionToPath()', function() {
         it('should return filename with prefix "tags" and version', function() {
-          expect(emberHost.versionToPath('1.0.0')).to.equal('/tags/v1.0.0/ember.js');
+          assert(emberHost.versionToPath('1.0.0') === '/tags/v1.0.0/ember.js');
         });
       });
     });
@@ -46,13 +46,13 @@ describe('AssetHost', function() {
     context('version is "1.0.0.rc8"', function() {
       describe('.versionToFilename()', function() {
         it('should return filename with prefix "ember-"', function() {
-          expect(emberHost.versionToFilename('1.0.0rc8')).to.equal('ember-1.0.0-rc.8.js');
+          assert(emberHost.versionToFilename('1.0.0rc8') === 'ember-1.0.0-rc.8.js');
         });
       });
 
       describe('.versionToPath()', function() {
         it('should return path with prefix "tags" and version', function() {
-          expect(emberHost.versionToPath('1.0.0.rc8')).to.equal('/tags/v1.0.0-rc.8/ember.js');
+          assert(emberHost.versionToPath('1.0.0.rc8') === '/tags/v1.0.0-rc.8/ember.js');
         });
       });
     });
@@ -60,13 +60,13 @@ describe('AssetHost', function() {
     context('version is "1.0.0.rc7"', function() {
       describe('.versionToFilename()', function() {
         it('should return filename with prefix "ember-"', function() {
-          expect(emberHost.versionToFilename('1.0.0rc7')).to.equal('ember-1.0.0-rc.7.js');
+          assert(emberHost.versionToFilename('1.0.0rc7') === 'ember-1.0.0-rc.7.js');
         });
       });
 
       describe('.versionToPath()', function() {
         it('should return filename with prefix "ember-"', function() {
-          expect(emberHost.versionToPath('1.0.0.rc7')).to.equal('/ember-1.0.0-rc.7.js');
+          assert(emberHost.versionToPath('1.0.0.rc7') === '/ember-1.0.0-rc.7.js');
         });
       });
     });
@@ -74,24 +74,24 @@ describe('AssetHost', function() {
     context('version is "latest"', function() {
       describe('.versionToFilename()', function() {
         it('should return filename "ember-latest.js"', function() {
-          expect(emberHost.versionToFilename('latest')).to.equal('ember-latest.js');
+          assert(emberHost.versionToFilename('latest') === 'ember-latest.js');
         });
       });
 
       describe('.versionToPath()', function() {
         it('should return path "/canary/ember.js"', function() {
-          expect(emberHost.versionToPath('latest')).to.equal('/canary/ember.js');
+          assert(emberHost.versionToPath('latest') === '/canary/ember.js');
         });
       });
     });
 
     describe('.isCacheable', function() {
       it('should return true with version "1.0.0"', function() {
-        expect(emberHost.isCacheable('1.0.0')).to.equal(true);
+        assert(emberHost.isCacheable('1.0.0'));
       });
 
       it('should return true with version "latest"', function() {
-        expect(emberHost.isCacheable('latest')).to.equal(false);
+        assert(!emberHost.isCacheable('latest'));
       });
     });
 
@@ -120,12 +120,12 @@ describe('AssetHost', function() {
 
         it('should fetch asset', function(done) {
           // XXX This test fails in Node.js 0.8
-          expect(fs.existsSync(localPath)).to.equal(false);
+          assert(!fs.existsSync(localPath));
 
           emberHost.fetchAsset('1.0.0', localDir, function(error, filename) {
-            expect(filename).to.equal('ember-1.0.0.js');
-            expect(fs.existsSync(localPath)).to.equal(true);
-            expect(fs.readFileSync(localPath).toString()).to.equal('Ember.VERSION');
+            assert(filename === 'ember-1.0.0.js');
+            assert(fs.existsSync(localPath));
+            assert(fs.readFileSync(localPath).toString() === 'Ember.VERSION');
 
             done(error);
           });
@@ -140,13 +140,13 @@ describe('AssetHost', function() {
         });
 
         it('should fetch asset', function(done) {
-          expect(fs.existsSync(localPath)).to.equal(false);
+          assert(!fs.existsSync(localPath));
 
           emberHost.fetchAsset('1.0.0', localDir, function(error, filename) {
-            expect(filename).to.equal('ember-1.0.0.js');
-            expect(fs.existsSync(localPath)).to.equal(false);
-            expect(error).to.be.an(Error);
-            expect(error.message).to.equal('Version not found: (1.0.0)');
+            assert(filename === 'ember-1.0.0.js');
+            assert(!fs.existsSync(localPath));
+            assert(error instanceof Error);
+            assert(error.message === 'Version not found: (1.0.0)');
 
             done();
           });

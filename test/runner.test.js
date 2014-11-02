@@ -3,7 +3,7 @@ var util   = require('util');
 var stream = require('stream');
 var Stream = stream.Stream;
 
-var expect = require('expect.js');
+var assert = require('power-assert');
 
 var Runner = require('../lib/runner');
 
@@ -40,7 +40,7 @@ describe('Runner', function() {
 
   it('should run with prompt', function(done) {
     output.write = function(data) {
-      expect(data).to.equal('term ember> ');
+      assert(data === 'term ember> ');
       done();
     };
   });
@@ -56,7 +56,7 @@ describe('Runner', function() {
           input.emit('data', 'message\n');
         }
       } else {
-        expect(data).to.contain('It is awesome.');
+        assert(data.indexOf('It is awesome.') >= 0);
         done();
       }
     };

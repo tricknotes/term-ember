@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-var expect = require('expect.js');
+var assert = require('power-assert');
 
 var Manager   = require('../lib/manager');
 var AssetHost = require('../lib/asset_host');
@@ -33,11 +33,11 @@ describe('Manager', function() {
         manager.setup('test', '0.0.0');
       };
 
-      expect(checkAssetHost).to.throwException(/^Asset not registered: test$/);
+      assert.throws(checkAssetHost, /^Asset not registered: test$/);
 
       Manager.registerHost('test', nullAssetHost);
 
-      expect(checkAssetHost).to.not.throwException();
+      assert.doesNotThrow(checkAssetHost);
     });
   });
 
@@ -52,11 +52,11 @@ describe('Manager', function() {
       });
 
       it('should clean all caches', function() {
-        expect(fs.existsSync(baseDir + '/downloads/test.js')).to.ok();
+        assert(fs.existsSync(baseDir + '/downloads/test.js'));
 
         Manager.clearCaches();
 
-        expect(fs.existsSync(baseDir + '/downloads/test.js')).to.not.ok();
+        assert(!fs.existsSync(baseDir + '/downloads/test.js'));
       });
     });
   });
@@ -72,7 +72,7 @@ describe('Manager', function() {
 
     describe('.setup()', function() {
       it('return an instance of Manager', function() {
-        expect(Manager.setup('test', '0.0.1')).to.be.a(Manager);
+        assert(Manager.setup('test', '0.0.1') instanceof Manager);
       });
     });
 
@@ -82,13 +82,13 @@ describe('Manager', function() {
       });
 
       it('should return self', function() {
-        expect(manager.setup('test', '0.0.0')).to.equal(manager);
+        assert(manager.setup('test', '0.0.0') === manager);
       });
 
       it('should call `AssetHost#fetchAsset`', function(done) {
         Manager.registerHost('test', AssetHost.create({
           fetchAsset: function(version) {
-            expect(version).to.equal('0.0.0');
+            assert(version === '0.0.0');
             done();
           }
         }));
@@ -100,7 +100,7 @@ describe('Manager', function() {
       it('should allow to be given local asset', function() {
         Manager.registerHost('test', AssetHost.create({
           fetchAsset: function(version) {
-            expect().fail();
+            assert(false);
           }
         }));
 

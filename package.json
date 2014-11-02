@@ -3,7 +3,7 @@
   "version": "0.1.6",
   "description": "Run Ember.js in your terminal!",
   "scripts": {
-    "test": "mocha test && jshint bin lib test/*.js"
+    "test": "mocha test --require intelli-espower-loader && jshint bin lib test/*.js"
   },
   "repository": "git@github.com:tricknotes/term-ember.git",
   "keywords": [
@@ -27,8 +27,12 @@
   },
   "devDependencies": {
     "mocha": "~> 2.0.1",
-    "expect.js": "*",
     "nock": "~> 0.48.1",
-    "jshint": "~> 2.5.6"
+    "jshint": "~> 2.5.6",
+    "power-assert": "~> 0.9.1",
+    "intelli-espower-loader": "~> 0.4.0"
+  },
+  "directories": {
+    "test": "test/"
   }
 }
